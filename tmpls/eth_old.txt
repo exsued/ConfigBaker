@@ -1,0 +1,259 @@
+Interface Ethernet1/1
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/2
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ dot1q-tunnel enable
+ switchport access vlan {{ACCESS_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/3
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/4
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{ALONEHOLE}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/5
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/6
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/7
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+ 
+!
+Interface Ethernet1/8
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/9
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/10
+ storm-control broadcast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ loopback-detection control shutdown
+!
+Interface Ethernet1/10
+ storm-control broadcast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/11
+ storm-control broadcast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/12
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/13
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/14
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/15
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/16
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/17
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/18
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/19
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/20
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/21
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/22
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/23
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/24
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{CLIENT_VLAN}}
+ loopback-detection control shutdown
+!
+Interface Ethernet1/25
+ transceiver-monitoring enable
+ no spanning-tree
+ switchport mode trunk
+ {{TRUNKVLANS_LIST}}
+ switchport trunk native vlan 2155
+!
+Interface Ethernet1/26
+ transceiver-monitoring enable
+ no spanning-tree
+ switchport mode trunk
+ {{TRUNKVLANS_LIST}}
+ switchport trunk native vlan 2139
+!

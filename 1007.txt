@@ -1,0 +1,348 @@
+!
+service password-encryption
+!
+hostname xx1007xx
+!
+multi config access
+authentication logging enable
+!
+username padmin privilege 15 password 7 6589c59cab273225e6662a1b1558e92b
+!
+authentication line console login local
+!
+!
+!
+mac-address-learning cpu-control
+!
+!
+logging 172.27.2.254 level informational
+!
+!
+lldp enable
+!
+spanning-tree mode rstp
+spanning-tree
+!
+!
+!
+mtu 2030
+transceiver-monitoring interval 5
+!
+!
+vlan 1-4094 
+!
+class-map AnyAny
+ match access-group 700
+!
+policy-map LimitControl
+ class AnyAny
+ policy 50000 50000 conform-action transmit exceed-action drop
+ exit
+!
+service-policy input LimitControl vlan 240-249;2671
+!
+Interface Ethernet1/1
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/2
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ dot1q-tunnel enable
+ switchport access vlan 861
+ loopback-detection control shutdown
+!
+Interface Ethernet1/3
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/4
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 2104
+ loopback-detection control shutdown
+!
+Interface Ethernet1/5
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/6
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/7
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/8
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/9
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/10
+ storm-control broadcast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ loopback-detection control shutdown
+!
+Interface Ethernet1/11
+ storm-control broadcast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ loopback-detection control shutdown
+!
+Interface Ethernet1/12
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ loopback-detection control shutdown
+!
+Interface Ethernet1/13
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/14
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/15
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/16
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/17
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/18
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/19
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/20
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/21
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/22
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/23
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/24
+ storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan 860
+ loopback-detection control shutdown
+!
+Interface Ethernet1/25
+ transceiver-monitoring enable
+ no spanning-tree
+ switchport mode trunk
+ switchport trunk allowed vlan 240-246;446;814;861;1442;1728;2407 
+ switchport trunk allowed vlan add 2520;2652;2702 
+ switchport trunk native vlan 2155
+!
+Interface Ethernet1/26
+ transceiver-monitoring enable
+ no spanning-tree
+ switchport mode trunk
+ switchport trunk allowed vlan 240-246;446;814;860;1442;1728;2407 
+ switchport trunk allowed vlan add 2520;2652;2702 
+ switchport trunk native vlan 2139
+!
+interface Vlan240
+ ip address 10.240.110.107 255.255.0.0
+!
+interface Vlan241
+ ip address 10.241.110.107 255.255.0.0
+!
+interface Vlan242
+ ip address 10.242.110.107 255.255.0.0
+!
+interface Vlan243
+ ip address 10.243.110.107 255.255.0.0
+!
+interface Vlan244
+ ip address 10.244.110.107 255.255.0.0
+!
+interface Vlan245
+ ip address 10.245.110.107 255.255.0.0
+!
+interface Vlan246
+ ip address 10.246.110.107 255.255.0.0
+!
+interface Vlan2407
+ ip address 10.27.110.107 255.255.0.0
+!
+mac-address-table notification
+!
+ip default-gateway 10.27.0.3
+!
+no login
+!
+isolate-port group AbonIzolate switchport interface Ethernet1/24
+isolate-port group AbonIzolate switchport interface Ethernet1/23
+isolate-port group AbonIzolate switchport interface Ethernet1/22
+isolate-port group AbonIzolate switchport interface Ethernet1/21
+isolate-port group AbonIzolate switchport interface Ethernet1/20
+isolate-port group AbonIzolate switchport interface Ethernet1/19
+isolate-port group AbonIzolate switchport interface Ethernet1/18
+isolate-port group AbonIzolate switchport interface Ethernet1/17
+isolate-port group AbonIzolate switchport interface Ethernet1/16
+isolate-port group AbonIzolate switchport interface Ethernet1/15
+isolate-port group AbonIzolate switchport interface Ethernet1/14
+isolate-port group AbonIzolate switchport interface Ethernet1/13
+isolate-port group AbonIzolate switchport interface Ethernet1/12
+isolate-port group AbonIzolate switchport interface Ethernet1/11
+isolate-port group AbonIzolate switchport interface Ethernet1/10
+isolate-port group AbonIzolate switchport interface Ethernet1/9
+isolate-port group AbonIzolate switchport interface Ethernet1/8
+isolate-port group AbonIzolate switchport interface Ethernet1/7
+isolate-port group AbonIzolate switchport interface Ethernet1/6
+isolate-port group AbonIzolate switchport interface Ethernet1/5
+isolate-port group AbonIzolate switchport interface Ethernet1/4
+isolate-port group AbonIzolate switchport interface Ethernet1/3
+isolate-port group AbonIzolate switchport interface Ethernet1/1
+end
+

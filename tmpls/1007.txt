@@ -1,0 +1,69 @@
+!
+service password-encryption
+!
+hostname xx{{ .Hostname }}xx
+!
+multi config access
+authentication logging enable
+!
+username padmin privilege 15 password 7 6589c59cab273225e6662a1b1558e92b
+! 
+authentication line console login local
+!
+!
+!
+mac-address-learning cpu-control
+!
+!
+logging 172.27.2.254 level informational
+!
+!
+lldp enable
+!
+spanning-tree mode rstp
+spanning-tree
+!
+!
+!
+mtu 2030
+transceiver-monitoring interval 5
+!
+!
+vlan 1-4094 
+!
+class-map AnyAny
+ match access-group 700
+!
+policy-map LimitControl
+ class AnyAny
+ policy 50000 50000 conform-action transmit exceed-action drop
+ exit
+!
+service-policy input LimitControl vlan 240-249;2671
+{{ range .Ifaces }}!
+Interface {{.EthName}}
+{{if eq .PortRole "uplink"}} transceiver-monitoring enable
+ no spanning-tree
+ switchport mode trunk
+ switchport trunk allowed vlan none
+ {{ range .TrunkVlans }}switchport trunk allowed vlan add {{ . }}
+ {{ end }}switchport trunk native vlan {{.Vlan}}{{ else }} storm-control broadcast 63
+ storm-control multicast 63
+ storm-control unicast 63
+ transceiver-monitoring enable
+ lldp disable
+ no spanning-tree
+ switchport access vlan {{.Vlan}}
+ loopback-detection control shutdown{{ end }}
+{{ end }}{{ range .ControlVlans}}!
+interface Vlan{{ .VlanId}}
+ ip address {{ .IP }} 255.255.0.0
+{{ end }}!
+mac-address-table notification
+!
+ip default-gateway {{ .Gateway }}
+!
+no login
+!{{ range .Ifaces }}
+isolate-port group AbonIzolate switchport interface {{ .EthName }}{{ end }}
+end

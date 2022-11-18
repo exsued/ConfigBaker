@@ -1,0 +1,22 @@
+{
+	"SpecialPorts":{
+		"Ethernet1/2":{
+			"PortRole":"QinQCustomer",
+			"AccessVlan":"861"
+		},
+		"Ethernet1/4":{
+			"PortRole":"AloneHole"
+		},
+		"Ethernet1/25":{
+			"PortRole":"uplink",
+			"TrunkVlans":["240", "241", "242", "243", "244", "245", "246", "446", "814", "861",
+				"1442", "1728", "2407", "2520", "2652", "2702"]
+		},
+		"Ethernet1/26":{
+			"PortRole":"uplink",
+			"TrunkVlans":["240", "241", "242", "243", "244", "245", "246", "446", "814", "860",
+				"1442", "1728", "2407", "2520", "2652", "2702"]
+		}
+	}
+}
+
