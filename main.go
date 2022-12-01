@@ -21,7 +21,8 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 func GetSpecialPortsInfo(Id int) ([]Ethernet, error) {
 	strId := strconv.Itoa(Id)
-	interfaceInfo, err := readJsonMap("./switches/" + strId + ".json")
+	//interfaceInfo, err := readJsonMapFile("./" + strId + ".json")
+	interfaceInfo, err := readJsonMapHttp("http://confdata2.proxicom.ru/reqs/" + strId + ".json")
 	if err != nil {
 		return nil, err
 	}
@@ -81,10 +82,8 @@ func GetSwitchInfo(Id int) (Switch, error) {
 	strId := strconv.Itoa(Id)
 	var sw Switch
 	//Раскрытие глобальной инфы
-	globalInfo, err := readJsonMap("./global.json")
-	if err != nil {
-		return sw, err
-	}
+	globalInfo, err := readJsonMapHttp("http://confdata2.proxicom.ru/global.json")
+	//globalInfo, err := readJsonMapFile("./global.json")
 	//Раскрытие файла инфы интерфейсов N-го коммутатора
 
 	//Получение информации о настройках коммутатора
@@ -113,7 +112,6 @@ func GetSwitchInfo(Id int) (Switch, error) {
 		err := errors.New("error while getting \"" + switchName + "\"'s \"PortList\" data in global.json")
 		return sw, err
 	}
-
 	defCustomerVlan, ok := switchInfo["DefaultCustomerVlan"].(string)
 	if !ok {
 		err := errors.New("error while getting SwId-" + strId + "'s \"DefaultCustomerVlan\" data in global.json")
@@ -127,6 +125,8 @@ func GetSwitchInfo(Id int) (Switch, error) {
 	specialPortsInfo, err := GetSpecialPortsInfo(Id)
 	if err != nil {
 		log.Print(err)
+		fmt.Println(" -> line 127")
+		return sw, err
 	}
 
 	vlansForAlone, ok := globalInfo["VlansForAlone"].([]any)
@@ -228,6 +228,7 @@ func GetSwitchInfo(Id int) (Switch, error) {
 		second, err := strconv.Atoi(sw.ControlVlans[j].VlanId)
 		if err != nil {
 			log.Print(err)
+			fmt.Println(" -> line 229")
 			return false
 		}
 		return first < second
@@ -249,11 +250,13 @@ func buildConfig(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(strId)
 	if err != nil {
 		log.Print(err)
+		fmt.Println(" -> line 251")
 		return
 	}
 	sw, err := GetSwitchInfo(id)
 	if err != nil {
 		log.Print(err)
+		fmt.Println(" -> line 257")
 		return
 	}
 	//Взятие соотвествующего шаблона из имеющегося списка
@@ -261,11 +264,13 @@ func buildConfig(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles(tmplPath)
 	if err != nil {
 		log.Print(err)
+		fmt.Println(" -> line 265")
 		return
 	}
 	//Вставка структуры и вывод полученного
 	if err := tmpl.Execute(w, sw); err != nil {
 		log.Print(err)
+		fmt.Println(" -> line 271")
 		return
 	}
 }
@@ -286,6 +291,7 @@ func main() {
 
 	err := http.ListenAndServe(":"+strconv.Itoa(port), nil)
 	if err != nil {
-		panic(err)
+		log.Print(err)
+		fmt.Println(" -> line 293")
 	}
 }
