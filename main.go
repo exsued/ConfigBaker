@@ -9,8 +9,6 @@ import (
 	"sort"
 	"strconv"
 	"text/template"
-
-	"github.com/gorilla/mux"
 )
 
 //идея добавления логирования запросов и с каких устройств и также игнорирование запросов со неизвестных источников
@@ -241,8 +239,7 @@ func GetSwitchInfo(Id int) (Switch, error) {
 	return sw, nil
 }
 func buildConfig(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	strId := vars["id"]
+	strId := r.FormValue("id")
 
 	//	Генерация конфига
 
@@ -284,10 +281,8 @@ func main() {
 	fmt.Println(":" + strconv.Itoa(port))
 
 	//Запуск сервера
-	rtr := mux.NewRouter()
-	rtr.HandleFunc("/BuildConfig", index)
-	rtr.HandleFunc("/BuildConfig/id{id}", buildConfig).Methods("GET")
-	http.Handle("/", rtr)
+	http.HandleFunc("/BuildConfig", buildConfig)
+	http.HandleFunc("/", index)
 
 	err := http.ListenAndServe(":"+strconv.Itoa(port), nil)
 	if err != nil {
