@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+ confgen:
+  container_name: cgen
+  build:
+   context: ConfigBaker
+  ports:
+  - "8020:8080/tcp"
+
