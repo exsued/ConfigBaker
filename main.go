@@ -84,7 +84,12 @@ func GetSwitchInfo(Id int) (Switch, error) {
 	//Раскрытие файла инфы интерфейсов N-го коммутатора
 
 	//Получение информации о настройках коммутатора
-	switchInfo, ok := (globalInfo["SwitchList"].(map[string]any)["SwId-"+strId]).(map[string]any)
+	switchList, ok := globalInfo["SwitchList"].(map[string]any)
+	if !ok {
+		err := errors.New("error while getting \"SwitchList\" in global.json")
+		return sw, err
+	}
+	switchInfo, ok := switchList["SwId-"+strId].(map[string]any)
 	if !ok {
 		err := errors.New("error while getting \"SwitchList\" data in global.json")
 		return sw, err
