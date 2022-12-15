@@ -19,7 +19,6 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 func GetSpecialPortsInfo(Id int) ([]Ethernet, error) {
 	strId := strconv.Itoa(Id)
-	//interfaceInfo, err := readJsonMapFile("./" + strId + ".json")
 	interfaceInfo, err := readJsonMapHttp("http://confdata2.proxicom.ru/reqs/" + strId + ".json")
 	if err != nil {
 		return nil, err
@@ -122,8 +121,7 @@ func GetSwitchInfo(Id int) (Switch, error) {
 
 	specialPortsInfo, err := GetSpecialPortsInfo(Id)
 	if err != nil {
-		log.Print(err)
-		fmt.Println(" -> line 127")
+		log.Println(err, " -> line 127")
 		return sw, err
 	}
 
@@ -225,8 +223,7 @@ func GetSwitchInfo(Id int) (Switch, error) {
 		first, err := strconv.Atoi(sw.ControlVlans[i].VlanId)
 		second, err := strconv.Atoi(sw.ControlVlans[j].VlanId)
 		if err != nil {
-			log.Print(err)
-			fmt.Println(" -> line 229")
+			log.Println(err, " -> line 229")
 			return false
 		}
 		return first < second
@@ -238,6 +235,7 @@ func GetSwitchInfo(Id int) (Switch, error) {
 	}
 	return sw, nil
 }
+
 func buildConfig(w http.ResponseWriter, r *http.Request) {
 	strId := r.FormValue("id")
 
@@ -246,28 +244,28 @@ func buildConfig(w http.ResponseWriter, r *http.Request) {
 	//1
 	id, err := strconv.Atoi(strId)
 	if err != nil {
-		log.Print(err)
-		fmt.Println(" -> line 251")
+		log.Println(err, "-> line 251")
+		fmt.Fprintln(w, "+++\n", err, " -> line 251")
 		return
 	}
 	sw, err := GetSwitchInfo(id)
 	if err != nil {
-		log.Print(err)
-		fmt.Println(" -> line 257")
+		log.Println(err, " -> line 257")
+		fmt.Fprintln(w, "+++\n", err, " -> line 257")
 		return
 	}
 	//Взятие соотвествующего шаблона из имеющегося списка
 	tmplPath := "./tmpls/" + strId + ".txt"
 	tmpl, err := template.ParseFiles(tmplPath)
 	if err != nil {
-		log.Print(err)
-		fmt.Println(" -> line 265")
+		log.Println(err, "-> line 265")
+		fmt.Fprintln(w, "+++\n", err, "-> line 265")
 		return
 	}
 	//Вставка структуры и вывод полученного
 	if err := tmpl.Execute(w, sw); err != nil {
-		log.Print(err)
-		fmt.Println(" -> line 271")
+		log.Println(err, " -> line 271")
+		fmt.Fprintln(w, "+++\n", err, " -> line 271")
 		return
 	}
 }
