@@ -255,7 +255,8 @@ func buildConfig(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	//Взятие соотвествующего шаблона из имеющегося списка
-	tmplPath := "./tmpls/" + strId + ".txt"
+
+	tmplPath := "./tmpls/common.txt"
 	tmpl, err := template.ParseFiles(tmplPath)
 	if err != nil {
 		log.Println(err, "-> line 265")
